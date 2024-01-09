@@ -10,7 +10,10 @@ export class UpdateRefreshTokenUseCase {
   ) {}
 
   async execute(userId: string, refreshToken: string) {
-    const hashedRefreshToken = await this.hashData.hash(refreshToken);
+    let hashedRefreshToken = null;
+    if (refreshToken) {
+      hashedRefreshToken = await this.hashData.hash(refreshToken);
+    }
 
     await this.updateSuperuserUseCase.execute(userId, {
       refreshToken: hashedRefreshToken,
