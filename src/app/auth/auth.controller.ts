@@ -7,6 +7,7 @@ import { GetRefreshTokensUseCase } from './use-cases/get-refresh-token.use-case'
 import { Request } from 'express';
 import { RefreshTokenGuard } from 'src/common/guards/refresh-token.guard';
 import { AccessTokenGuard } from 'src/common/guards/access-token.guard';
+import { UpdateRefreshTokenUseCase } from './use-cases/update-refresh-token.use-case';
 
 @Controller('auth')
 export class AuthController {
@@ -14,6 +15,7 @@ export class AuthController {
     private readonly signInService: SignInUseCase,
     private readonly createSuperuser: SignUpUseCase,
     private readonly refreshTokensService: GetRefreshTokensUseCase,
+    private readonly removeRefreshToken: UpdateRefreshTokenUseCase,
   ) {}
 
   @UseGuards(AccessTokenGuard)
@@ -27,11 +29,13 @@ export class AuthController {
     return await this.signInService.execute(signInDto);
   }
 
-  // @Get(':id')
-  // logout(@Req() req: Request) {
-  //   const userId = req.user['id'];
-  //   return this.authService.findOne(+id);
-  // }
+  @UseGuards(AccessTokenGuard)
+  @Get('logout')
+  logout(@Req() req: Request) {
+    const userId = req.user['id'];
+    const refreshToken = null;
+    return this.removeRefreshToken.execute(userId, refreshToken);
+  }
 
   @UseGuards(RefreshTokenGuard)
   @Get('refresh')
