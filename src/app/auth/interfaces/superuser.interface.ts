@@ -1,4 +1,4 @@
-import { ISuperuser } from 'src/app/superuser/interfaces/superuser.interface';
+import { ISuperuser } from '../../superuser/interfaces/superuser.interface';
 
 export type SuperuserSignInResponse = {
   accessToken: string;
