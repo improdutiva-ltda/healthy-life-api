@@ -2,11 +2,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { SuperuserDocument } from '../../superuser/entities/superuser.entity';
 import { Injectable } from '@nestjs/common';
-import { ArgonAdapterService } from 'src/infra/argon-adapter/argon-adapter.service';
-import { checkSuperuserRole } from 'src/app/superuser/utils/verify-superuser-role';
+import { ArgonAdapterService } from '../../../infra/argon-adapter/argon-adapter.service';
+import { checkSuperuserRole } from '../../superuser/utils/verify-superuser-role';
 import { CreateSuperuserDto } from '../dto/create-superuser.dto';
-import { AlreadyExistsError } from 'src/app/errors/already-exists-error/already-exists-error';
-import { NotFoundError } from 'src/app/errors/not-found-error/not-found-error';
+import { AlreadyExistsError } from '../../errors/already-exists-error/already-exists-error';
+import { NotFoundError } from '../../errors/not-found-error/not-found-error';
 
 @Injectable()
 export class CreateSuperuserUseCase {

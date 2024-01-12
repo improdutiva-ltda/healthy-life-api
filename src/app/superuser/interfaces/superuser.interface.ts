@@ -19,12 +19,6 @@ export type ISuperuserResponse = {
   user: ISuperuser;
 };
 
-export type ICreateSuperuserResponse = {
-  accessToken: string;
-  refreshToken: string;
-  user: Pick<ISuperuser, 'name' | 'role' | 'roleId'>;
-};
-
 export type IUpdateSuperuserResponse = {
   user: Omit<ISuperuser, 'password'>;
 };

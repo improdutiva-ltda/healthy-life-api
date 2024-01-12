@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { JwtAdapterService } from 'src/infra/jwt/jwt-adapter.service';
+import { JwtAdapterService } from '../../../infra/jwt/jwt-adapter.service';
 import { UpdateRefreshTokenUseCase } from './update-refresh-token.use-case';
 import { SuperuserSignUpResponse } from '../interfaces/superuser.interface';
-import { CreateSuperuserDto } from 'src/app/superuser/dto/create-superuser.dto';
-import { CreateSuperuserUseCase } from 'src/app/superuser/use-cases/create.use-case';
+import { CreateSuperuserDto } from '../../superuser/dto/create-superuser.dto';
+import { CreateSuperuserUseCase } from '../../superuser/use-cases/create.use-case';
 
 @Injectable()
 export class SignUpUseCase {

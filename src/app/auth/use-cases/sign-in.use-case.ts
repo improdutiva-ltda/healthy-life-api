@@ -1,11 +1,11 @@
 import { SignInDto } from '../dto/auth.dto';
-import { GetSuperuserByEmailUseCase } from 'src/app/superuser/use-cases/get-by-email.use-case';
+import { GetSuperuserByEmailUseCase } from '../../superuser/use-cases/get-by-email.use-case';
 import { UpdateRefreshTokenUseCase } from './update-refresh-token.use-case';
-import { JwtAdapterService } from 'src/infra/jwt/jwt-adapter.service';
+import { JwtAdapterService } from '../../../infra/jwt/jwt-adapter.service';
 import { Injectable } from '@nestjs/common';
-import { ArgonAdapterService } from 'src/infra/argon-adapter/argon-adapter.service';
+import { ArgonAdapterService } from '../../../infra/argon-adapter/argon-adapter.service';
 import { SuperuserSignInResponse } from '../interfaces/superuser.interface';
-import { UnauthorizedError } from 'src/app/errors/unauthorized-error/unauthorized-error';
+import { UnauthorizedError } from '../../errors/unauthorized-error/unauthorized-error';
 
 @Injectable()
 export class SignInUseCase {

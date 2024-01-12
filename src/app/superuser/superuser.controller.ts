@@ -12,7 +12,7 @@ import { FindSuperuserByIdUseCase } from './use-cases/find-by-id.use-case';
 import { RemoveSuperuserByIdUseCase } from './use-cases/remove.use-case';
 import { FindAllSuperusersUseCase } from './use-cases/find-all.use-case';
 import { UpdateSuperuserUseCase } from './use-cases/update.use-case';
-import { AccessTokenGuard } from 'src/common/guards/access-token.guard';
+import { AccessTokenGuard } from '../../common/guards/access-token.guard';
 
 @Controller('superuser')
 export class SuperuserController {
