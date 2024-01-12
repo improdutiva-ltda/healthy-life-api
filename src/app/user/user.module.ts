@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './entities/User.entity';
+import { User, UserSchema } from './entities/user.entity';
 import { FindAllUsersUseCase } from './use-cases/find-all.use-case';
 import { FindUserByIdUseCase } from './use-cases/find-by-id.use-case';
 import { RemoveUserByIdUseCase } from './use-cases/remove.use-case';

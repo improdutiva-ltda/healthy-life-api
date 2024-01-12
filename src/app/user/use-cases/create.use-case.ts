@@ -3,7 +3,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { AlreadyExistsError } from '../../errors/already-exists-error/already-exists-error';
 import { NotFoundError } from '../../errors/not-found-error/not-found-error';
-import { UserDocument } from '../entities/User.entity';
+import { UserDocument } from '../entities/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { FindSuperuserByIdUseCase } from '../../superuser/use-cases/find-by-id.use-case';
 import { userDto } from '../dto/user.dto';
