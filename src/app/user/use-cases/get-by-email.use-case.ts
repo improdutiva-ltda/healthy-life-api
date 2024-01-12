@@ -1,8 +1,8 @@
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserDocument } from '../entities/user.entity';
-import { IUser } from '../interfaces/User.interface';
-import { userDto } from '../dto/User.dto';
+import { IUser } from '../interfaces/user.interface';
+import { userDto } from '../dto/user.dto';
 import { Injectable } from '@nestjs/common';
 import { NotFoundError } from '../../errors/not-found-error/not-found-error';
 

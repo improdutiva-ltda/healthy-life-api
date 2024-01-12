@@ -1,10 +1,10 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { UpdateUserDto } from '../dto/update-user.dto';
-import { IUser } from '../interfaces/User.interface';
+import { IUser } from '../interfaces/user.interface';
 import { Model } from 'mongoose';
 import { UserDocument } from '../entities/user.entity';
 import { FindUserByIdUseCase } from './find-by-id.use-case';
-import { userDto } from '../dto/User.dto';
+import { userDto } from '../dto/user.dto';
 import { Injectable } from '@nestjs/common';
 import { AlreadyExistsError } from '../../errors/already-exists-error/already-exists-error';
 import { NotFoundError } from '../../errors/not-found-error/not-found-error';
