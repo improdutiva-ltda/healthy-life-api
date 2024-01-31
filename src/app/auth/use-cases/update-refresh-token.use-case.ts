@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateSuperuserUseCase } from 'src/app/superuser/use-cases/update.use-case';
-import { ArgonAdapterService } from 'src/infra/argon-adapter/argon-adapter.service';
+import { UpdateSuperuserUseCase } from '../../superuser/use-cases/update.use-case';
+import { ArgonAdapterService } from '../../../infra/argon-adapter/argon-adapter.service';
 
 @Injectable()
 export class UpdateRefreshTokenUseCase {

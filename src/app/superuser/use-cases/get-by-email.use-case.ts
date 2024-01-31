@@ -4,7 +4,7 @@ import { SuperuserDocument } from '../entities/superuser.entity';
 import { ISuperuserResponse } from '../interfaces/superuser.interface';
 import { superuserDto } from '../dto/superuser.dto';
 import { Injectable } from '@nestjs/common';
-import { NotFoundError } from 'src/app/errors/not-found-error/not-found-error';
+import { NotFoundError } from '../../errors/not-found-error/not-found-error';
 
 @Injectable()
 export class GetSuperuserByEmailUseCase {

@@ -7,9 +7,9 @@ import { FindSuperuserByIdUseCase } from './find-by-id.use-case';
 import { createSuperuserDtoResponse } from '../dto/superuser.dto';
 import { checkSuperuserRole } from '../utils/verify-superuser-role';
 import { Injectable } from '@nestjs/common';
-import { ArgonAdapterService } from 'src/infra/argon-adapter/argon-adapter.service';
-import { AlreadyExistsError } from 'src/app/errors/already-exists-error/already-exists-error';
-import { NotFoundError } from 'src/app/errors/not-found-error/not-found-error';
+import { ArgonAdapterService } from '../../../infra/argon-adapter/argon-adapter.service';
+import { AlreadyExistsError } from '../../errors/already-exists-error/already-exists-error';
+import { NotFoundError } from '../../errors/not-found-error/not-found-error';
 
 @Injectable()
 export class UpdateSuperuserUseCase {

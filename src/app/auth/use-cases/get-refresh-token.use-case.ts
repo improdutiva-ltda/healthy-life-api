@@ -1,8 +1,8 @@
+import { ArgonAdapterService } from './../../../infra/argon-adapter/argon-adapter.service';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { FindSuperuserByIdUseCase } from 'src/app/superuser/use-cases/find-by-id.use-case';
-import { ArgonAdapterService } from 'src/infra/argon-adapter/argon-adapter.service';
+import { FindSuperuserByIdUseCase } from '../../superuser/use-cases/find-by-id.use-case';
 import { UpdateRefreshTokenUseCase } from './update-refresh-token.use-case';
-import { JwtAdapterService } from 'src/infra/jwt/jwt-adapter.service';
+import { JwtAdapterService } from '../../../infra/jwt/jwt-adapter.service';
 
 @Injectable()
 export class GetRefreshTokensUseCase {
