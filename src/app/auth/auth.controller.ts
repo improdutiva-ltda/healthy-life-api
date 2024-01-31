@@ -18,7 +18,7 @@ export class AuthController {
     private readonly removeRefreshToken: UpdateRefreshTokenUseCase,
   ) {}
 
-  @UseGuards(AccessTokenGuard)
+  // @UseGuards(AccessTokenGuard)
   @Post('register')
   register(@Body() createSuperuserDto: CreateSuperuserDto) {
     return this.createSuperuser.execute(createSuperuserDto);

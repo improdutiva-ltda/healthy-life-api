@@ -1,10 +1,10 @@
 import { SuperuserDocument } from './../../superuser/entities/superuser.entity';
 
-type ISuperuser = Pick<SuperuserDocument, 'id' | 'email' | 'role' | 'roleId'>;
+type ISuperuser = Pick<SuperuserDocument, 'id'>;
 
 export type IUser = {
   id: string;
-  superUser: ISuperuser[];
+  superUsers: ISuperuser[];
   name: string;
   email: string;
   phone: string;
@@ -17,8 +17,16 @@ export type IUser = {
 };
 
 export type ListUsersServiceResponse = {
-  users: IUser[];
+  docs: IUser[];
+  totalDocs: number;
+  limit: number;
   totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number;
+  nextPage: number;
 };
 
 export type RemoveUserServiceResponse = {

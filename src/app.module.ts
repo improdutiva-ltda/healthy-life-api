@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './app/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './app/user/user.module';
+import { AnthropometricEvaluationModule } from './app/anthropometric-evaluation/anthropometric-evaluation.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UserModule } from './app/user/user.module';
     SuperuserModule,
     AuthModule,
     UserModule,
+    AnthropometricEvaluationModule,
   ],
   controllers: [],
   providers: [],

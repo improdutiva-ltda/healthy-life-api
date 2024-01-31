@@ -1,34 +1,28 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { UserDocument } from '../entities/user.entity';
-import { Model } from 'mongoose';
+import { PaginateModel } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { userToPaginationDto } from '../dto/user.dto';
 import { ListUsersServiceResponse } from '../interfaces/user.interface';
 
 @Injectable()
 export class FindAllUsersUseCase {
-  constructor(@InjectModel('User') private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel('User') private userModel: PaginateModel<UserDocument>,
+  ) {}
 
   async execute(
     queryParams: any,
     page: number,
     limit: number,
   ): Promise<ListUsersServiceResponse> {
-    const queries = this.handleQuery(queryParams);
+    if (page <= 0 || page > 15) page = 1;
+    const query = this.handleQuery(queryParams);
 
-    const count = await this.userModel.countDocuments(queries).exec();
-    const totalPages = Math.floor((count - 1) / limit) + 1;
+    const options = { page, limit };
+    const users = await this.userModel.paginate(query, options);
 
-    if (page <= 0) page = 1;
-    const skip = limit * (page - 1);
-
-    const users = await this.userModel
-      .find(queries)
-      .limit(limit)
-      .skip(skip)
-      .exec();
-
-    return userToPaginationDto(users, totalPages);
+    return userToPaginationDto(users);
   }
 
   handleQuery(queryParams: any) {

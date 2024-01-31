@@ -1,14 +1,14 @@
-import { SuperuserDocument } from './../../superuser/entities/superuser.entity';
+import { Superuser } from './../../superuser/entities/superuser.entity';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 import { EnumStatus } from './status.enum';
 
 export type UserDocument = HydratedDocument<User>;
-
 @Schema()
 export class User {
-  @Prop({ required: true })
-  superUser: SuperuserDocument[];
+  @Prop({ type: [Types.ObjectId], ref: Superuser.name, required: true })
+  superUsers: Types.ObjectId[];
 
   @Prop({ required: true })
   name: string;
@@ -47,3 +47,5 @@ export class User {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.plugin(mongoosePaginate);
