@@ -1,13 +1,11 @@
+import { PaginateResult } from 'mongoose';
 import { UserDocument } from '../entities/user.entity';
 import { IUser, ListUsersServiceResponse } from '../interfaces/user.interface';
 
 export const userDto = (user: UserDocument): IUser => ({
   id: user.id,
-  superUser: user.superUser.map((superuser) => ({
+  superUsers: user.superUsers.map((superuser) => ({
     id: superuser.id,
-    email: superuser.email,
-    roleId: superuser.roleId,
-    role: superuser.role,
   })),
   name: user.name,
   email: user.email,
@@ -21,16 +19,12 @@ export const userDto = (user: UserDocument): IUser => ({
 });
 
 export const userToPaginationDto = (
-  param: UserDocument[],
-  totalPages: number,
+  data: PaginateResult<UserDocument>,
 ): ListUsersServiceResponse => ({
-  users: param.map((user) => ({
+  docs: data.docs.map((user) => ({
     id: user.id,
-    superUser: user.superUser.map((superuser) => ({
+    superUsers: user.superUsers.map((superuser) => ({
       id: superuser.id,
-      email: superuser.email,
-      roleId: superuser.roleId,
-      role: superuser.role,
     })),
     name: user.name,
     email: user.email,
@@ -42,5 +36,35 @@ export const userToPaginationDto = (
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
   })),
-  totalPages: totalPages,
+  totalDocs: data.docs.length,
+  limit: data.limit,
+  totalPages: data.totalPages,
+  page: data.page,
+  pagingCounter: data.pagingCounter,
+  hasPrevPage: data.hasPrevPage,
+  hasNextPage: data.hasNextPage,
+  prevPage: data.prevPage,
+  nextPage: data.nextPage,
 });
+// export const userToPaginationDto = (
+//   data: PaginateResult<AnthropometricEvaluationDocument>,
+// ): ResultAnthropometricEvaluationToPagination => ({
+//   docs: data.docs.map((value) => ({
+//     id: value.id.toString(),
+//     user: value.user.toString(),
+//     anthropometricEvaluation: value.anthropometricEvaluation.map(
+//       (anthropEval) => basicAnthropEvalDto(anthropEval),
+//     ),
+//     createdAt: value.createdAt,
+//     updatedAt: value.updatedAt,
+//   })),
+//   totalDocs: data.docs.length,
+//   limit: data.limit,
+//   totalPages: data.totalPages,
+//   page: data.page,
+//   pagingCounter: data.pagingCounter,
+//   hasPrevPage: data.hasPrevPage,
+//   hasNextPage: data.hasNextPage,
+//   prevPage: data.prevPage,
+//   nextPage: data.nextPage,
+// });

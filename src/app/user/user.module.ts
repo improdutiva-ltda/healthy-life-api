@@ -24,6 +24,6 @@ import { SuperuserModule } from '../superuser/superuser.module';
     RemoveUserByIdUseCase,
     CreateUserUseCase,
   ],
-  exports: [],
+  exports: [FindUserByIdUseCase],
 })
 export class UserModule {}

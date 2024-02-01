@@ -29,7 +29,7 @@ export class CreateUserUseCase {
     const { user } = await this.findSuperuserByIdService.execute(superuserId);
 
     const createdUser = await this.userModel.create({
-      superUser: user,
+      superUsers: user,
       email,
       ...rest,
     });
